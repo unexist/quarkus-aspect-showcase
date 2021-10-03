@@ -2,6 +2,12 @@
 
 This project holds a showcase for aspect-oriented programming.
 
+=== CLI
+
+```shell
+$ brew install --cask micronaut-projects/tap/micronaut
+```
+
 === Links
 
 - https://docs.micronaut.io/latest/guide/index.html

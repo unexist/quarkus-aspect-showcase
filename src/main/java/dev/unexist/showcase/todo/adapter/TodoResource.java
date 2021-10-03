@@ -91,7 +91,7 @@ public class TodoResource {
         return response;
     }
 
-    @Get(value = "{id}", produces = MediaType.APPLICATION_JSON)
+    @Get(uri = "{id}", produces = MediaType.APPLICATION_JSON)
     @Operation(summary = "Get todo by id")
     @Tag(name = "Todo")
     @ApiResponses({
@@ -114,7 +114,7 @@ public class TodoResource {
         return response;
     }
 
-    @Put(value = "{id}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @Put(uri = "{id}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     @Operation(summary = "Update todo by id")
     @Tag(name = "Todo")
     @ApiResponses({
@@ -134,7 +134,7 @@ public class TodoResource {
         return response;
     }
 
-    @Delete(value = "{id}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
+    @Delete(uri = "{id}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
     @Operation(summary = "Delete todo by id")
     @Tag(name = "Todo")
     public HttpResponse<?> delete(@Parameter("id") int id) {
