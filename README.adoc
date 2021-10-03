@@ -1,0 +1,15 @@
+= Showcase for aspect-oriented programming based on Micronaut
+
+This project holds a showcase for aspect-oriented programming.
+
+=== Links
+
+- https://docs.micronaut.io/latest/guide/index.html
+- https://micronaut-projects.github.io/micronaut-jaxrs/latest/guide/
+- https://micronaut.io/launch/
+
+=== Instructions
+
+Following make targets exist:
+
+- **test** - Run tests
