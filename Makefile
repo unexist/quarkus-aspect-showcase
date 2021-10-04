@@ -21,6 +21,9 @@ export JSON_TODO
 todo:
 	@echo $$JSON_TODO | bash
 
+list:
+	@curl -X 'GET' 'http://localhost:8080/todo' -H 'accept: */*' | jq .
+
 # Helper
 test:
 	mvn test
