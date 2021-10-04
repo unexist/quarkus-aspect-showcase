@@ -1,3 +1,9 @@
 micronaut:
   application:
-    name: Todo
+    name: showcase-aop-micronaut
+
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**

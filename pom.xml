@@ -17,7 +17,4 @@
         <!-- Micronaut -->
         <exec.mainClass>dev.unexist.showcase.todo.application.Application</exec.mainClass>
     </properties>
-
-    <dependencies>
-    </dependencies>
 </project>

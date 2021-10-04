@@ -51,9 +51,15 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class Application {
     @SuppressWarnings("checkstyle:UncommentedMain")
     public static void main(String[] args) {
-        Micronaut.build(args)
-                .packages("dev.unexist.showcase.todo")
+        Micronaut.run(Application.class, args);
+        /*Micronaut.build(args)
+                .packages(
+                        "dev.unexist.showcase.todo",
+                        "dev.unexist.showcase.todo.adapter",
+                        "dev.unexist.showcase.todo.domain",
+                        "dev.unexist.showcase.todo.infrastructure"
+                )
                 .mainClass(Application.class)
-                .start();
+                .start();*/
     }
 }

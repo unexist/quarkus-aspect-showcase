@@ -13,6 +13,7 @@ $ brew install --cask micronaut-projects/tap/micronaut
 - https://docs.micronaut.io/latest/guide/index.html
 - https://micronaut-projects.github.io/micronaut-jaxrs/latest/guide/
 - https://micronaut.io/launch/
+- https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-java.html
 
 === Instructions
 

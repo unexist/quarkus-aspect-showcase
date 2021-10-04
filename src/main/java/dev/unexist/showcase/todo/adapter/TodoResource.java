@@ -14,7 +14,6 @@ package dev.unexist.showcase.todo.adapter;
 import dev.unexist.showcase.todo.domain.todo.Todo;
 import dev.unexist.showcase.todo.domain.todo.TodoBase;
 import dev.unexist.showcase.todo.domain.todo.TodoService;
-import io.micronaut.context.annotation.Context;
 import io.micronaut.context.annotation.Parameter;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
@@ -23,9 +22,7 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
-import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.annotation.Put;
-import io.micronaut.http.uri.UriMatchInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -53,11 +50,11 @@ public class TodoResource {
             @ApiResponse(responseCode = "406", description = "Bad data"),
             @ApiResponse(responseCode = "500", description = "Server error")
     })
-    public HttpResponse<?> create(TodoBase base, @Context UriMatchInfo uriInfo) {
+    public HttpResponse<?> create(TodoBase base) {
         HttpResponse<?> response;
 
         if (this.todoService.create(base)) {
-            URI uri = URI.create(uriInfo.getUri());
+            URI uri = URI.create("/todo");
 
             response = HttpResponse.created(uri);
         } else {
@@ -67,8 +64,7 @@ public class TodoResource {
         return response;
     }
 
-    @Get
-    @Produces(MediaType.APPLICATION_JSON)
+    @Get (produces = MediaType.APPLICATION_JSON)
     @Operation(summary = "Get all todos")
     @Tag(name = "Todo")
     @ApiResponses({
