@@ -23,6 +23,7 @@ import io.micronaut.http.annotation.Delete;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Put;
+import io.micronaut.http.uri.UriBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -53,8 +54,12 @@ public class TodoResource {
     public HttpResponse<?> create(TodoBase base) {
         HttpResponse<?> response;
 
-        if (this.todoService.create(base)) {
-            URI uri = URI.create("/todo");
+        int newId = this.todoService.create(base);
+
+        if (-1 != newId) {
+            URI uri = UriBuilder.of("/todo")
+                    .path(Integer.toString(newId))
+                    .build();
 
             response = HttpResponse.created(uri);
         } else {
