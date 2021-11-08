@@ -14,6 +14,7 @@ package dev.unexist.showcase.todo.adapter;
 import dev.unexist.showcase.todo.domain.todo.Todo;
 import dev.unexist.showcase.todo.domain.todo.TodoBase;
 import dev.unexist.showcase.todo.domain.todo.TodoService;
+import dev.unexist.showcase.todo.infrastructure.interceptor.LogTime;
 import io.micronaut.context.annotation.Parameter;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
@@ -32,13 +33,17 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+@LogTime
 @Controller("/todo")
 public class TodoResource {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TodoResource.class);
 
     @Inject
     TodoService todoService;
@@ -56,6 +61,8 @@ public class TodoResource {
 
         int newId = this.todoService.create(base);
 
+        LOGGER.info("todo={}", base);
+
         if (-1 != newId) {
             URI uri = UriBuilder.of("/todo")
                     .path(Integer.toString(newId))
@@ -69,7 +76,7 @@ public class TodoResource {
         return response;
     }
 
-    @Get (produces = MediaType.APPLICATION_JSON)
+    @Get(produces = MediaType.APPLICATION_JSON)
     @Operation(summary = "Get all todos")
     @Tag(name = "Todo")
     @ApiResponses({
